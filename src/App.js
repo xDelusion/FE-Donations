@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import UserContext from "./context/UserContext";
+import { useEffect, useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+// import { checkToken } from "./api/auth";
+import Navbar from "./components/Navbar";
 
 function App() {
+  const [user, setUser] = useState(false);
+
+  // useEffect(() => {
+  //   setUser(checkToken());
+  // }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+      <div>
+        {user ? (
+          <div>
+            <Navbar />
+            <Routes>
+              <Route path="/home" element={<Home />} />
+            </Routes>
+          </div>
+        ) : (
+          <div>
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/*" element={<>Page Not Found</>} />
+            </Routes>
+          </div>
+        )}
+      </div>
+    </UserContext.Provider>
   );
 }
 
