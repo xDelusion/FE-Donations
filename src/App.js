@@ -1,38 +1,25 @@
-
+import logo from "./logo.svg";
 import "./App.css";
+import Table from "./pages/Table";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import { Route, Routes } from "react-router-dom";
 import UserContext from "./context/UserContext";
-import { useEffect, useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-// import { checkToken } from "./api/auth";
-import Navbar from "./components/Navbar";
+import { useState } from "react";
 
 function App() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState({});
 
-  // useEffect(() => {
-  //   setUser(checkToken());
-  // }, []);
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <div>
-        {user ? (
-          <div>
-            <Navbar />
-            <Routes>
-              <Route path="/home" element={<Home />} />
-            </Routes>
-          </div>
-        ) : (
-          <div>
-            <Routes>
-              <Route path="/home" element={<Home />} />
-              <Route path="/*" element={<>Page Not Found</>} />
-            </Routes>
-          </div>
-        )}
-      </div>
-    </UserContext.Provider>
+    <div className="App">
+      <UserContext.Provider value={[user, setUser]}>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/list" element={<Table />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </UserContext.Provider>
+    </div>
   );
 }
 
