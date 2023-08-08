@@ -1,6 +1,6 @@
 {
   "name": "fe-donations",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@tanstack/react-query": "^4.32.6",
