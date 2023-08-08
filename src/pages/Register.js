@@ -44,7 +44,7 @@ const Register = () => {
   return (
     <div>
       <body>
-        <div class="relative flex flex-col justify-center overflow-scroll">
+        <div class="relative flex flex-col justify-center overflow-scroll ">
           <div class="w-full p-6 m-auto bg-white rounded-md shadow-md ring-2 ring-gray-800/50 lg:w-[30%]">
             <h1 class="text-3xl font-semibold text-center text-gray-700">
               Register
@@ -148,7 +148,7 @@ const Register = () => {
               </div>
               <div>
                 <button type="submit" onClick={registerFn} class="btn w-[20%]">
-                  Login
+                  Register
                 </button>
               </div>
             </form>
