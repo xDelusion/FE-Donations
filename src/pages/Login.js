@@ -44,6 +44,7 @@ const Login = () => {
                   <span class="text-base label-text">Civl ID</span>
                 </label>
                 <input
+                  name="civilid"
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter Civil ID"
@@ -52,9 +53,22 @@ const Login = () => {
               </div>
               <div>
                 <label class="label">
+                  <span class="text-base label-text">Emp No.</span>
+                </label>
+                <input
+                  name="empNo"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter Emp No."
+                  class="w-full input input-bordered"
+                />
+              </div>
+              <div>
+                <label class="label">
                   <span class="text-base label-text">Password</span>
                 </label>
                 <input
+                  name="password"
                   onChange={handleChange}
                   type="password"
                   placeholder="Enter Password"
