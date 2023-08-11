@@ -6,6 +6,9 @@ import Register from "./pages/Register";
 import { Route, Routes } from "react-router-dom";
 import UserContext from "./context/UserContext";
 import { useState } from "react";
+import BloodRequest, { BloodRequestInfo } from "./pages/BloodRequest";
+import SingleCard from "./pages/BloodRequest";
+import DonateCard from "./components/DonateCard";
 
 function App() {
   const [user, setUser] = useState({});
@@ -17,6 +20,8 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/list" element={<Table />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/bloodRequest" element={<SingleCard />} />
+          <Route path="/bloodRequestCard" element={<DonateCard />} />
         </Routes>
       </UserContext.Provider>
     </div>

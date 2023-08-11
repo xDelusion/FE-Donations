@@ -9,7 +9,7 @@ const login = async (userInfo) => {
 };
 
 const register = async (userInfo) => {
-  const { data } = await instance.post("/auth/register", userInfo);
+  const { data } = await instance.post("/auth/register/admin", userInfo);
   storeToken(data.token);
   return data;
 };
