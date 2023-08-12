@@ -12,6 +12,10 @@ import RecipientApplication from "./pages/RecipientApplication";
 import DonorList from "./pages/DonorList";
 import DonorLists from "./pages/DonorLists";
 import DonorProf from "./pages/DonorProf";
+import BloodRequest, { BloodRequestInfo } from "./pages/BloodRequest";
+import SingleCard from "./pages/BloodRequest";
+import DonateCard from "./components/DonateCard";
+
 
 function App() {
   const [user, setUser] = useState({});
@@ -29,6 +33,8 @@ function App() {
           <Route path="/donor" element={<DonorList />} />
           <Route path="/donors" element={<DonorLists />} />
           <Route path="/donorProf" element={<DonorProf />} />
+          <Route path="/bloodRequest" element={<SingleCard />} />
+          <Route path="/bloodRequestCard" element={<DonateCard />} />
         </Routes>
       </UserContext.Provider>
     </div>
