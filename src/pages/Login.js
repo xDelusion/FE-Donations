@@ -4,8 +4,9 @@ import { login, register } from "../api/auth";
 import jwt_decode from "jwt-decode";
 import UserContext from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navbar";
 import backgroundImage from "../assets/media/AdobeStock_198163710.png";
+
 const Login = () => {
   const navigate = useNavigate();
 
