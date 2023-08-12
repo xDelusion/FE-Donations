@@ -3,7 +3,7 @@ import RowCard from "../components/RowCard";
 import { getDonors } from "../api/list";
 import { useQuery } from "@tanstack/react-query";
 import { getAllRecipients } from "../api/recipient";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navbar";
 import Svg from "../components/Svg";
 
 const Table = () => {
