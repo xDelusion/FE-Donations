@@ -15,13 +15,14 @@ import DonorProf from "./pages/DonorProf";
 import BloodRequest, { BloodRequestInfo } from "./pages/BloodRequest";
 import SingleCard from "./pages/BloodRequest";
 import DonateCard from "./components/DonateCard";
-
+import Navbar from "./components/Navbar";
 
 function App() {
   const [user, setUser] = useState({});
 
   return (
     <div className="App">
+      <Navbar />
       <UserContext.Provider value={[user, setUser]}>
         <Routes>
           <Route path="/" element={<Login />} />

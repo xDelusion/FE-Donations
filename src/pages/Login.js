@@ -4,7 +4,6 @@ import { login, register } from "../api/auth";
 import jwt_decode from "jwt-decode";
 import UserContext from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/NavBar";
 import backgroundImage from "../assets/media/AdobeStock_198163710.png";
 const Login = () => {
   const navigate = useNavigate();
@@ -33,9 +32,27 @@ const Login = () => {
     loginFn();
   };
 
+  // const data = [
+  //   {
+  //     question: "HELLO WORLD",
+  //     answer: "HELLO HI",
+  //   },
+  //   {
+  //     question: "HELLO WORLD",
+  //     answer: "HELLO HI",
+  //   },
+  //   {
+  //     question: "HELLO WORLD",
+  //     answer: "HELLO HI",
+  //   },
+  //   {
+  //     question: "HELLO WORLD",
+  //     answer: "HELLO HI",
+  //   },
+  // ];
+
   return (
     <div>
-      <NavBar />
       <body className="bg-gray-200">
         <div className="relative flex flex-col justify-center h-screen overflow-hidden">
           <div className="w-full p-6 m-auto rounded-xl shadow-md ring-gray-800/50 bg-white lg:w-[30%]">
@@ -93,6 +110,14 @@ const Login = () => {
                 >
                   Login
                 </button>
+                {/* {data.map((q) => {
+                  return (
+                    <div className="border border-black rounded-md">
+                      {q.question}
+                      <div>{q.answer}</div>
+                    </div>
+                  );
+                })} */}
               </div>
             </form>
           </div>

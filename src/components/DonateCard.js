@@ -19,6 +19,7 @@ const DonateCard = () => {
 
       <button
         className=" w-[173px] h-[37.2px] left-[552.14px] top-[674.03px] bg-[#FFFFFF] border-solid-[#9D0303] absolute"
+        onClick={DonorProfile}
         // onClick={DonorDetail}
       >
         Doner Details
@@ -31,7 +32,9 @@ const DonateCard = () => {
         dateFormat="MM/dd/yyyy"
       />
       {/* <button onClick={url(calander)}> </button> */}
-      <button className="w-[] h-[] left-[] top-[] bg-red-900"> Save </button>
+      <button className="w-[173px] h-[37.2px] left-[552.14px] top-[674.03px] bg-red-900">
+        Save
+      </button>
     </div>
   );
 };

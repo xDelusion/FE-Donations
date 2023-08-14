@@ -3,7 +3,6 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import { addRecipient } from "../api/recipient";
-import NavBar from "../components/NavBar";
 
 const RecipientApplication = () => {
   const navigate = useNavigate();
@@ -35,7 +34,6 @@ const RecipientApplication = () => {
 
   return (
     <div className="bg-slate-200 h-screen">
-      <NavBar />
       <body>
         <div className="relative flex flex-col justify-center">
           <div className="mt-20 p-6 mb-20 m-auto bg-gray-100 rounded-md shadow-md ring-gray-800/50 lg:w-[30%]">
