@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import { addRecipient } from "../api/recipient";
 
+
+// import NavBar from "../components/Navbar";
+
+
 const RecipientApplication = () => {
   const navigate = useNavigate();
 

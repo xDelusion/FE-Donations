@@ -3,19 +3,25 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { register } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
+
+
+// import NavBar from "../components/Navbar";
+
 // import backgroundsignup from "../media/signup.jpg";
 
 const Register = () => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({});
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const [user, setUser] = useContext(UserContext);
   const handleChange = (e) => {
     setError("");
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
+
 
   const handlePasswordConfirmation = (e) => {
     setConfirmPassword(e.target.value);
@@ -68,6 +74,7 @@ const Register = () => {
   //   }
   // };
 
+
   const { mutate: registerFn, error: error2 } = useMutation({
     mutationFn: () => register(userInfo),
     onSuccess: () => {
@@ -83,12 +90,26 @@ const Register = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
-    if (userInfo.password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
     registerFn();
+  };
+
+  const validatePassword = (password) => {
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
+
+    if (!regex.test(password)) {
+      return "must be at least 8 characters long and contain one uppercase, one lowercase letter, and one number.";
+    }
+    return "";
+  };
+
+  const passwordChangeHandler = (value) => {
+    const err = validatePassword(value);
+
+    setPasswordError(err);
+    if (err === "") {
+      setPassword(value);
+      return setUserInfo({ ...userInfo, password: value });
+    }
   };
 
   // if (user) {
@@ -197,11 +218,16 @@ const Register = () => {
                 </label>
                 <input
                   name="password"
-                  onChange={handleChange}
+                  onChange={(value) => {
+                    passwordChangeHandler(value);
+                  }}
                   type="password"
                   placeholder="Enter Password"
                   className="w-full input input-bordered bg-slate-200"
                 />
+                {passwordError !== "" && (
+                  <div style={{ color: "grey" }}>{passwordError}</div>
+                )}
               </div>
               {/* <div>
                 <label className="label">
