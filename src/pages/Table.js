@@ -3,7 +3,7 @@ import RowCard from "../components/RowCard";
 import { getDonors } from "../api/list";
 import { useQuery } from "@tanstack/react-query";
 import { getAllRecipients } from "../api/recipient";
-import NavBar from "../components/Navbar";
+
 import Svg from "../components/Svg";
 
 const Table = () => {
@@ -17,7 +17,6 @@ const Table = () => {
   console.log(query);
   return (
     <div className="bg-slate-200 h-screen">
-      <NavBar />
       <div className="flex flex-col items-center justify-center">
         <p className="text-5xl ..."> </p>
         <p className="text-5xl ...">Recipients</p>

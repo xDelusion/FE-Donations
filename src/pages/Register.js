@@ -1,9 +1,12 @@
 import React, { useContext, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { register } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
-import NavBar from "../components/Navbar";
+
+
+// import NavBar from "../components/Navbar";
+
 // import backgroundsignup from "../media/signup.jpg";
 
 const Register = () => {
@@ -18,6 +21,59 @@ const Register = () => {
     setError("");
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
+
+
+  const handlePasswordConfirmation = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  // const {
+  //   data: dataProfile,
+  //   isFetching,
+  //   refetch,
+  // } = useQuery({
+  //   queryKey: ["profile"],
+  //   queryFn: () => getMe(),
+  //   onSuccess: (data) => {
+  //     setUserInfo(data);
+  //   },
+  // });
+
+  // const { data: paciuser } = useQuery({
+  //   queryKey: ["paciusers"],
+  //   queryFn: () => getAllPaci(),
+  //   onSuccess: (data) => {
+  //     // setUserInfo(data);
+  //     console.log(`data = ${data}`);
+  //   },
+  //   onError: (error) => {
+  //     console.log(error);
+  //   },
+  // });
+
+  // const civilIDChangeHandler = (value) => {
+  //   const foundUser = paciuser?.find((user) => user.civilid === value);
+  //   const date1 = new Date(foundUser.dob);
+  //   const day = date1.getDate();
+  //   const month = date1.getMonth() + 1; // Months are zero-based
+  //   const year = date1.getFullYear();
+  //   const formattedDate = day + "/" + month + "/" + year;
+
+  //   if (foundUser) {
+  //     setPasswordError("");
+
+  //     return setUserInfo({
+  //       ...userInfo,
+  //       civilid: value,
+  //       name: foundUser.name,
+  //       dob: formattedDate,
+  //       bloodType: foundUser.bloodType,
+  //     });
+  //   } else {
+  //     setPasswordError("Not valid civil id");
+  //   }
+  // };
+
 
   const { mutate: registerFn, error: error2 } = useMutation({
     mutationFn: () => register(userInfo),
@@ -63,7 +119,6 @@ const Register = () => {
   return (
     <div className="bg-gray-200">
       <body>
-        <NavBar />
         <div className="relative flex flex-col justify-center mt-24 mb-24">
           <div className="w-full p-6 m-auto bg-white rounded-md shadow-md ring-gray-800/50 lg:w-[30%]">
             <h1 className="text-3xl font-semibold text-center text-gray-700">
@@ -93,6 +148,7 @@ const Register = () => {
                 <input
                   name="civilid"
                   onChange={handleChange}
+                  //  onBlur={() => civilIDChangeHandler(userInfo.civilid)}
                   type="text"
                   placeholder="Enter Civil ID"
                   className="w-full input input-bordered bg-slate-200"
