@@ -5,16 +5,23 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { Route, Routes } from "react-router-dom";
 import UserContext from "./context/UserContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DonorLists from "./components/DonorLists";
 import SingleCard from "./pages/BloodRequest";
 import DonateCard from "./components/DonateCard";
 import RecipientInfo from "./pages/RecipientInfo";
 import Appointment from "./components/Appointment";
 import RecipientForm from "./pages/RecipientForm";
+import { checkToken } from "./api/auth";
 
 function App() {
   const [user, setUser] = useState(null);
+  useEffect(() => {
+    const token = checkToken();
+    if (token) {
+      setUser(true);
+    }
+  }, []);
 
   return (
     <div className="App">

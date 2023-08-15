@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./Navbar";
 
-const Appointment = ({ data }) => {
+const Appointment = ({ data, setShow }) => {
   console.log(data);
   return (
     <div>
@@ -52,7 +52,7 @@ const Appointment = ({ data }) => {
               Date
             </label>
             <input
-              className="shadow appearance-none text-black placeholder:text-black border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-300"
+              className="shadow appearance-none text-black placeholder:text-black border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-300 "
               name=""
               id="date"
               type="date"
@@ -74,6 +74,9 @@ const Appointment = ({ data }) => {
             <button
               className="bg-red-700 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
               type="submit"
+              onClick={() => {
+                setShow(false);
+              }}
             >
               Book Appointment
             </button>

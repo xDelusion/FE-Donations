@@ -11,12 +11,10 @@ const TableHeader_2 = ({ data }) => {
           {/* head */}
           <thead className="bg-red-600 text-xl">
             <tr className="text-zinc-50">
-              <th></th>
-              <th className="text-center align-middle">Name</th>
-              <th className="text-center align-middle"> </th>
-              <th className="text-center align-middle"> </th>
+              <th>#</th>
+              <th className="text-left align-middle min-w-[200px]">Name</th>
               <th className="text-center align-middle">
-                Schedule an Appointment       
+                Schedule an Appointment
               </th>
             </tr>
           </thead>
@@ -26,10 +24,10 @@ const TableHeader_2 = ({ data }) => {
                 <tr>
                   <th>{index + 1}</th>
                   <td>{user.name}</td>
-                  <td></td>
-                  <td></td>
-                  <td>
+
+                  <td className="flex ">
                     <button
+                      className=""
                       onClick={() => {
                         // the user should go here
                         setShow(user);

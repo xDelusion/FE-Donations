@@ -65,102 +65,100 @@ const Register = () => {
   return (
     <div>
       <div className="bg-white min-h-screen">
-        <body>
-          <Navbar />
-          <div className="relative flex flex-col justify-center mt-24 mb-24">
-            <div className="w-full p-6 m-auto bg-gray-100 rounded-md shadow-2xl ring-gray-800/50 lg:w-[30%]">
-              <h1 className="text-3xl font-semibold text-center text-gray-700">
-                Register
-              </h1>
-              <form onSubmit={handleFormSubmit} className="space-y-4">
-                <div>
-                  <label className="label">
-                    <span className="text-base label-text font-semibold text-black">
-                      Name
-                    </span>
-                  </label>
-                  <input
-                    name="name"
-                    onChange={handleChange}
-                    type="text"
-                    placeholder="Enter Full Name"
-                    className="w-full input input-bordered border-gray-400 bg-white"
-                  />
-                </div>
-                <div>
-                  <label className="label">
-                    <span className="text-base label-text font-semibold text-black">
-                      Civil ID
-                    </span>
-                  </label>
-                  <input
-                    name="civilid"
-                    onChange={handleChange}
-                    type="text"
-                    placeholder="Enter Civil ID"
-                    className="w-full input input-bordered border-gray-400 bg-white"
-                  />
-                </div>
-                <div>
-                  <label className="label">
-                    <span className="text-base label-text font-semibold text-black">
-                      Employee No.
-                    </span>
-                  </label>
-                  <input
-                    name="empNo"
-                    onChange={handleChange}
-                    type="text"
-                    placeholder="Enter Employee No."
-                    className="w-full input input-bordered border-gray-400 bg-white"
-                  />
-                </div>
-                <div>
-                  <label className="label">
-                    <span className="text-base label-text font-semibold text-black">
-                      Email
-                    </span>
-                  </label>
-                  <input
-                    name="email"
-                    onChange={handleChange}
-                    type="text"
-                    placeholder="Enter Email"
-                    className="w-full input input-bordered border-gray-400 bg-white"
-                  />
-                </div>
-                <div>
-                  <label className="label">
-                    <span className="text-base label-text font-semibold text-black">
-                      Password
-                    </span>
-                  </label>
-                  <input
-                    name="password"
-                    onChange={(value) => {
-                      passwordChangeHandler(value);
-                    }}
-                    type="password"
-                    placeholder="Enter Password"
-                    className="w-full input input-bordered border-gray-400 bg-white"
-                  />
-                  {passwordError !== "" && (
-                    <div style={{ color: "grey" }}>{passwordError}</div>
-                  )}
-                </div>
-                <div>
-                  <button
-                    type="submit"
-                    onClick={registerFn}
-                    className="btn w-[20%] bg-red-600 text-white hover:bg-red-800"
-                  >
-                    Register
-                  </button>
-                </div>
-              </form>
-            </div>
+        <Navbar />
+        <div className="relative flex flex-col justify-center mt-24 pb-24">
+          <div className="w-full p-6 m-auto bg-gray-100 rounded-md shadow-2xl ring-gray-800/50 lg:w-[30%]">
+            <h1 className="text-3xl font-semibold text-center text-gray-700">
+              Register
+            </h1>
+            <form onSubmit={handleFormSubmit} className="space-y-4">
+              <div>
+                <label className="label">
+                  <span className="text-base label-text font-semibold text-black">
+                    Name
+                  </span>
+                </label>
+                <input
+                  name="name"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter Full Name"
+                  className="w-full input input-bordered border-gray-400 bg-white"
+                />
+              </div>
+              <div>
+                <label className="label">
+                  <span className="text-base label-text font-semibold text-black">
+                    Civil ID
+                  </span>
+                </label>
+                <input
+                  name="civilid"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter Civil ID"
+                  className="w-full input input-bordered border-gray-400 bg-white"
+                />
+              </div>
+              <div>
+                <label className="label">
+                  <span className="text-base label-text font-semibold text-black">
+                    Employee No.
+                  </span>
+                </label>
+                <input
+                  name="empNo"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter Employee No."
+                  className="w-full input input-bordered border-gray-400 bg-white"
+                />
+              </div>
+              <div>
+                <label className="label">
+                  <span className="text-base label-text font-semibold text-black">
+                    Email
+                  </span>
+                </label>
+                <input
+                  name="email"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Enter Email"
+                  className="w-full input input-bordered border-gray-400 bg-white"
+                />
+              </div>
+              <div>
+                <label className="label">
+                  <span className="text-base label-text font-semibold text-black">
+                    Password
+                  </span>
+                </label>
+                <input
+                  name="password"
+                  onChange={(value) => {
+                    passwordChangeHandler(value);
+                  }}
+                  type="password"
+                  placeholder="Enter Password"
+                  className="w-full input input-bordered border-gray-400 bg-white"
+                />
+                {passwordError !== "" && (
+                  <div style={{ color: "grey" }}>{passwordError}</div>
+                )}
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  onClick={registerFn}
+                  className="btn w-[20%] bg-red-600 text-white hover:bg-red-800"
+                >
+                  Register
+                </button>
+              </div>
+            </form>
           </div>
-        </body>
+        </div>
       </div>
     </div>
   );

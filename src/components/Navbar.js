@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../context/UserContext";
-
+import image from "../assets/media/Life1.png";
 const Navbar = () => {
   const [user, setUser] = useContext(UserContext);
   console.log(user);
@@ -10,11 +10,7 @@ const Navbar = () => {
       <div className="navbar bg-red-500 flex justify-center items-center">
         <div className="flex-1">
           <Link to="/list">
-            <img
-              className="w-[10%] h-[10%]"
-              src="https://img.icons8.com/?size=512&id=8mUEYCITnqJU&format=png"
-              alt="Logo"
-            />
+            <img className="w-[10%] h-[10%]" src={image} alt="Logo" />
           </Link>
         </div>
         <div className="flex-none">

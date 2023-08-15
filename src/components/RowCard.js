@@ -17,7 +17,6 @@ const RowCard = ({
       <tr className="">
         <th className="text-center align-middle relative">{index}</th>
         <td className="text-center align-middle">{donorSerialNo}</td>
-        <td className="text-center align-middle">{voluntaryDonations}</td>
         <td className="text-center align-middle">{donationRequests}</td>
         <td className="text-center align-middle">{bloodType}</td>
         <td className="text-center align-middle">

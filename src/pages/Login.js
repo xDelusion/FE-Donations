@@ -6,7 +6,7 @@ import UserContext from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import backgroundImage from "../assets/media/AdobeStock_198163710.png";
-import loginImg from "../assets/login.jpg";
+import lifeImage from "../assets/media/Life.png";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -44,14 +44,17 @@ const Login = () => {
     <div>
       <body className="bg-white">
         <div className="relative flex flex-col justify-center h-screen overflow-hidden">
-          <div className="w-full p-6 m-auto rounded-xl shadow-2xl border border-r-transparent ring-gray-800/50 bg-gray-100 lg:w-[30%]">
-            <h1 className="text-3xl font-semibold text-center text-gray-900 mt-3">
+          <div className="w-full p-6 m-auto rounded-xl shadow-2xl border border-r-transparent ring-gray-800/50 bg-gray-100 lg:w-[30%] ">
+            <div className="flex justify-center">
+              <img className="w-[150px] h-[150px]" src={lifeImage} alt="Logo" />
+            </div>
+            <h1 className="text-3xl font-semibold text-center text-gray-900 ">
               Login
             </h1>
             <form onSubmit={handleFormSubmit} className="space-y-4">
-              <div>
+              <div className="w-[60%] m-auto ">
                 <label className="label mt-8">
-                  <span className="text-base label-text ml-32 font-semibold text-black">
+                  <span className="text-base  label-text   font-semibold text-black">
                     Civl ID
                   </span>
                 </label>
@@ -60,12 +63,12 @@ const Login = () => {
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter Civil ID"
-                  className="w-[51%] input input-bordered bg-white border-gray-400"
+                  className="w-[100%] input input-bordered bg-white border-gray-400"
                 />
               </div>
-              <div>
+              <div className="w-[60%] m-auto ">
                 <label className="label">
-                  <span className="text-base label-text ml-32 font-semibold text-black">
+                  <span className="text-base label-text  font-semibold text-black">
                     Emp No.
                   </span>
                 </label>
@@ -74,12 +77,12 @@ const Login = () => {
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter Emp No."
-                  className="w-[51%] input input-bordered bg-white border-gray-400"
+                  className="w-[100%] input input-bordered bg-white border-gray-400"
                 />
               </div>
-              <div>
+              <div className="w-[60%] m-auto ">
                 <label className="label">
-                  <span className="text-base label-text ml-32 font-semibold text-black">
+                  <span className="text-base label-text  font-semibold text-black">
                     Password
                   </span>
                 </label>
@@ -88,7 +91,7 @@ const Login = () => {
                   onChange={handleChange}
                   type="password"
                   placeholder="Enter Password"
-                  className="w-[51%] input input-bordered bg-white border-gray-400"
+                  className="w-[100%] input input-bordered bg-white border-gray-400"
                 />
               </div>
               <div>

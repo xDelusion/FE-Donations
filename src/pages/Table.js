@@ -26,7 +26,7 @@ const Table = () => {
             <input
               onChange={(e) => setQuery(e.target.value)}
               className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-l-lg border-l-gray-50 border-l-2 border border-gray-100 focus:ring-blue-500 focus:border-blue-500 border-r-0 dark:bg-gray-200 dark:border-l-gray-400  dark:border-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
-              placeholder="Search Mockups, Logos, Design Templates..."
+              placeholder="Search..."
             ></input>
             <select
               className="rounded-r-lg bg-slate-300 text-black border border-gray-400 border-l-0"
@@ -39,6 +39,9 @@ const Table = () => {
                 Blood Type
               </option>
 
+              <option className="text-center" value={""}>
+                ALL
+              </option>
               <option className="text-center" value={"A+"}>
                 A+
               </option>
@@ -71,9 +74,7 @@ const Table = () => {
               <tr className="text-zinc-50">
                 <th className="shadow-2xl">#</th>
                 <th className="text-center align-middle font-normal">Name</th>
-                <th className="text-center align-middle font-normal">
-                  Voluntary Donations
-                </th>
+
                 <th className="text-center align-middle font-normal">
                   Donation Requests
                 </th>
@@ -81,7 +82,7 @@ const Table = () => {
                   Blood Types
                 </th>
                 <th className="text-center align-middle font-normal">
-                  Set Appointment
+                  View Profile
                 </th>
               </tr>
             </thead>

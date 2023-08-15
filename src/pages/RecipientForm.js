@@ -37,7 +37,7 @@ const RecipientForm = () => {
   };
 
   return (
-    <div className="bg-white h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
       <body>
         <div className="relative flex flex-col justify-center">
@@ -124,7 +124,7 @@ const RecipientForm = () => {
                   className="w-full input input-bordered border-gray-400 bg-white"
                 />
               </div>
-              <div>
+              {/* <div>
                 <button
                   type="button"
                   onClick={() =>
@@ -138,7 +138,7 @@ const RecipientForm = () => {
                 ) : (
                   <p className="text-yellow-500">Not Urgent</p>
                 )}
-              </div>
+              </div> */}
 
               <div>
                 <button type="submit" className="btn w-[25%]">
