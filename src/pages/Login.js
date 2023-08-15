@@ -102,6 +102,14 @@ const Login = () => {
                 >
                   Login
                 </button>
+                {/* {data.map((q) => {
+                  return (
+                    <div className="border border-black rounded-md">
+                      {q.question}
+                      <div>{q.answer}</div>
+                    </div>
+                  );
+                })} */}
               </div>
             </form>
           </div>

@@ -25,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* <Navbar /> */}
       <UserContext.Provider value={[user, setUser]}>
         {!user ? (
           <Login />
