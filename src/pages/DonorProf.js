@@ -29,8 +29,8 @@ const DonorProf = () => {
   //     answer: "HELLO HI",
   //   },
   // ];
- 
-  };
+
+  // };
 
   return (
     <div className="min-w-screen  min-h-screen   bg-gray-100 p-[30px] flex flex-col">

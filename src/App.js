@@ -5,38 +5,43 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { Route, Routes } from "react-router-dom";
 import UserContext from "./context/UserContext";
-import { useState } from "react";
-import Table2 from "./pages/Table2";
-import Appointment from "./components/Appointment";
-import RecipientApplication from "./pages/RecipientApplication";
-import DonorList from "./pages/DonorList";
-import DonorLists from "./pages/DonorLists";
-import DonorProf from "./pages/DonorProf";
-import BloodRequest, { BloodRequestInfo } from "./pages/BloodRequest";
+import { useEffect, useState } from "react";
+import DonorLists from "./components/DonorLists";
 import SingleCard from "./pages/BloodRequest";
 import DonateCard from "./components/DonateCard";
-import Navbar from "./components/Navbar";
+import RecipientInfo from "./pages/RecipientInfo";
+import Appointment from "./components/Appointment";
+import RecipientForm from "./pages/RecipientForm";
+import { checkToken } from "./api/auth";
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const token = checkToken();
+    if (token) {
+      setUser(true);
+    }
+  }, []);
 
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
       <UserContext.Provider value={[user, setUser]}>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/list" element={<Table />} />
-          <Route path="/lists" element={<Table2 />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/appointment" element={<Appointment />} />
-          <Route path="/application" element={<RecipientApplication />} />
-          <Route path="/donor" element={<DonorList />} />
-          <Route path="/donors" element={<DonorLists />} />
-          <Route path="/donorProf" element={<DonorProf />} />
-          <Route path="/bloodRequest" element={<SingleCard />} />
-          <Route path="/bloodRequestCard" element={<DonateCard />} />
-        </Routes>
+        {!user ? (
+          <Login />
+        ) : (
+          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/list" element={<Table />} />
+            <Route path="/recipient-form" element={<RecipientForm />} />
+            <Route path="/app" element={<Appointment />} />
+            <Route path="/recipientID/:_id" element={<RecipientInfo />} />
+            <Route path="/donors" element={<DonorLists />} />
+            <Route path="/bloodRequest" element={<SingleCard />} />
+            <Route path="/bloodRequestCard" element={<DonateCard />} />
+          </Routes>
+        )}
       </UserContext.Provider>
     </div>
   );

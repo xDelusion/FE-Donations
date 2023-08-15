@@ -3,10 +3,9 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { register } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
-
-
-// import NavBar from "../components/Navbar";
-
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
+import loginImg from "../assets/login.jpg";
 // import backgroundsignup from "../media/signup.jpg";
 
 const Register = () => {
@@ -22,10 +21,9 @@ const Register = () => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
-
-  const handlePasswordConfirmation = (e) => {
-    setConfirmPassword(e.target.value);
-  };
+  // const handlePasswordConfirmation = (e) => {
+  //   setConfirmPassword(e.target.value);
+  // };
 
   // const {
   //   data: dataProfile,
@@ -74,7 +72,6 @@ const Register = () => {
   //   }
   // };
 
-
   const { mutate: registerFn, error: error2 } = useMutation({
     mutationFn: () => register(userInfo),
     onSuccess: () => {
@@ -117,10 +114,11 @@ const Register = () => {
   // }
 
   return (
-    <div className="bg-gray-200">
-      <body>
-        <div className="relative flex flex-col justify-center mt-24 mb-24">
-          <div className="w-full p-6 m-auto bg-white rounded-md shadow-md ring-gray-800/50 lg:w-[30%]">
+    <div>
+      <div className="bg-white min-h-screen">
+        <Navbar />
+        <div className="relative flex flex-col justify-center mt-24 pb-24">
+          <div className="w-full p-6 m-auto bg-gray-100 rounded-md shadow-2xl ring-gray-800/50 lg:w-[30%]">
             <h1 className="text-3xl font-semibold text-center text-gray-700">
               Register
             </h1>
@@ -136,7 +134,7 @@ const Register = () => {
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter Full Name"
-                  className="w-full input input-bordered bg-slate-200"
+                  className="w-full input input-bordered border-gray-400 bg-white"
                 />
               </div>
               <div>
@@ -151,21 +149,7 @@ const Register = () => {
                   //  onBlur={() => civilIDChangeHandler(userInfo.civilid)}
                   type="text"
                   placeholder="Enter Civil ID"
-                  className="w-full input input-bordered bg-slate-200"
-                />
-              </div>
-              <div>
-                <label className="label">
-                  <span className="text-base label-text font-semibold text-black">
-                    Hospital ID
-                  </span>
-                </label>
-                <input
-                  name="hospital_id"
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Enter Hospital ID"
-                  className="w-full input input-bordered bg-slate-200"
+                  className="w-full input input-bordered border-gray-400 bg-white"
                 />
               </div>
               <div>
@@ -179,7 +163,7 @@ const Register = () => {
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter Employee No."
-                  className="w-full input input-bordered bg-slate-200"
+                  className="w-full input input-bordered border-gray-400 bg-white"
                 />
               </div>
               <div>
@@ -193,21 +177,7 @@ const Register = () => {
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter Email"
-                  className="w-full input input-bordered bg-slate-200"
-                />
-              </div>
-              <div>
-                <label className="label">
-                  <span className="text-base label-text font-semibold text-black">
-                    Phone
-                  </span>
-                </label>
-                <input
-                  name="phone"
-                  onChange={handleChange}
-                  type="text"
-                  placeholder="Enter Phone No."
-                  className="w-full input input-bordered bg-slate-200"
+                  className="w-full input input-bordered border-gray-400 bg-white"
                 />
               </div>
               <div>
@@ -223,29 +193,17 @@ const Register = () => {
                   }}
                   type="password"
                   placeholder="Enter Password"
-                  className="w-full input input-bordered bg-slate-200"
+                  className="w-full input input-bordered border-gray-400 bg-white"
                 />
                 {passwordError !== "" && (
                   <div style={{ color: "grey" }}>{passwordError}</div>
                 )}
               </div>
-              {/* <div>
-                <label className="label">
-                  <span className="text-base label-text">Confirm Password</span>
-                </label>
-                <input
-                  name="confirmpassword"
-                  onChange={handleChange}
-                  type="password"
-                  placeholder="Please confirm Password"
-                  className="w-full input input-bordered"
-                />
-              </div> */}
               <div>
                 <button
                   type="submit"
                   onClick={registerFn}
-                  className="btn w-[20%] bg-red-700 text-white hover:bg-red-900"
+                  className="btn w-[20%] bg-red-600 text-white hover:bg-red-800"
                 >
                   Register
                 </button>
@@ -253,7 +211,7 @@ const Register = () => {
             </form>
           </div>
         </div>
-      </body>
+      </div>
     </div>
   );
 };

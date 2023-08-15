@@ -97,3 +97,16 @@
   margin-left: 10px;
   /* Other necessary styles */
 }
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+input {
+  color-scheme: light;
+}

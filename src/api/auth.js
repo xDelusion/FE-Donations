@@ -14,6 +14,10 @@ const register = async (userInfo) => {
   return data;
 };
 
+const me = async () => {
+  const {data} = await instance.get("/auth/")
+}
+
 const storeToken = (token) => {
   localStorage.setItem("token", token);
 };

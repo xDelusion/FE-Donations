@@ -3,12 +3,9 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import { addRecipient } from "../api/recipient";
+import Navbar from "../components/Navbar";
 
-
-// import NavBar from "../components/Navbar";
-
-
-const RecipientApplication = () => {
+const RecipientForm = () => {
   const navigate = useNavigate();
 
   const [userInfo, setUserInfo] = useState({ urgent: false });
@@ -18,33 +15,37 @@ const RecipientApplication = () => {
   const [user, setUser] = useContext(UserContext);
   const handleChange = (e) => {
     setError("");
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+    setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
-  const { mutate: submitForm, error: error2 } = useMutation({
-    mutationFn: () => {
-      return addRecipient(userInfo);
-    },
+  console.log(userInfo);
+  const { mutate: submitForm } = useMutation({
+    mutationFn: () => addRecipient(userInfo),
     onSuccess: () => {
       setUser(true);
       navigate("/list");
     },
     onError: (error) => {
-      console.log("Axios Error:", error, error2);
+      console.log("Axios Error:", error);
       // Handle the error, you can set it to the state to display to the user.
       setError("An error occurred while registering.");
     },
   });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submitForm();
+  };
+
   return (
-    <div className="bg-slate-200 h-screen">
+    <div className="bg-white min-h-screen">
+      <Navbar />
       <body>
         <div className="relative flex flex-col justify-center">
-          <div className="mt-20 p-6 mb-20 m-auto bg-gray-100 rounded-md shadow-md ring-gray-800/50 lg:w-[30%]">
+          <div className="mt-20 p-6 mb-20 m-auto bg-gray-100 rounded-md shadow-xl ring-gray-800/50 lg:w-[30%]">
             <h1 className="text-3xl font-semibold text-center text-gray-700 mt-4">
               Recipient Form
             </h1>
-            <form onSubmit={handleChange} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="label">
                   <span className="text-base label-text text-black font-semibold mt-6">
@@ -56,7 +57,7 @@ const RecipientApplication = () => {
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter Full Name"
-                  className="w-full input input-bordered bg-slate-200"
+                  className="w-full input input-bordered border-gray-400 bg-white"
                 />
               </div>
               <div>
@@ -70,7 +71,7 @@ const RecipientApplication = () => {
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter Civil ID"
-                  className="w-full input input-bordered bg-slate-200"
+                  className="w-full input input-bordered border-gray-400 bg-white"
                 />
               </div>
               <div>
@@ -84,16 +85,21 @@ const RecipientApplication = () => {
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter File No."
-                  className="w-full input input-bordered bg-slate-200"
+                  className="w-full input input-bordered border-gray-400 bg-white"
                 />
               </div>
               <label
                 for="countries"
-                class="block mb-2 text-sm font-medium text-black text-left ml-2"
+                className="block mb-2 text-sm font-medium text-black text-left ml-2"
               >
                 Blood Type
               </label>
-              <select class="bg-slate-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <select
+                onChange={(e) => {
+                  setUserInfo({ ...userInfo, bloodType: e.target.value });
+                }}
+                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
                 <option selected>Choose Blood Type</option>
                 <option value={"A+"}>A+</option>
                 <option value={"A-"}>A-</option>
@@ -111,15 +117,16 @@ const RecipientApplication = () => {
                   </span>
                 </label>
                 <input
-                  name="phone"
+                  name="noOfBloodBags"
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter No. of Blood Units"
-                  className="w-full input input-bordered bg-slate-200"
+                  className="w-full input input-bordered border-gray-400 bg-white"
                 />
               </div>
-              <div>
+              {/* <div>
                 <button
+                  type="button"
                   onClick={() =>
                     setUserInfo({ ...userInfo, urgent: !userInfo.urgent })
                   }
@@ -131,14 +138,10 @@ const RecipientApplication = () => {
                 ) : (
                   <p className="text-yellow-500">Not Urgent</p>
                 )}
-              </div>
+              </div> */}
 
               <div>
-                <button
-                  type="submit"
-                  onClick={submitForm}
-                  className="btn w-[25%]"
-                >
+                <button type="submit" className="btn w-[25%]">
                   Submit
                 </button>
               </div>
@@ -150,4 +153,4 @@ const RecipientApplication = () => {
   );
 };
 
-export default RecipientApplication;
+export default RecipientForm;

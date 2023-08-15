@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RowCard from "../components/RowCard";
+import RowCard from "./RowCard";
 import { useQuery } from "@tanstack/react-query";
 import { getAllRecipients } from "../api/recipient";
 
