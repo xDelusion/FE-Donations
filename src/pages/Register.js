@@ -21,9 +21,9 @@ const Register = () => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
-  const handlePasswordConfirmation = (e) => {
-    setConfirmPassword(e.target.value);
-  };
+  // const handlePasswordConfirmation = (e) => {
+  //   setConfirmPassword(e.target.value);
+  // };
 
   // const {
   //   data: dataProfile,
