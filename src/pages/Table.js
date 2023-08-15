@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import RowCard from "../components/RowCard";
-import { getDonors } from "../api/list";
 import { useQuery } from "@tanstack/react-query";
 import { getAllRecipients } from "../api/recipient";
-import NavBar from "../components/Navbar";
-import Svg from "../components/Svg";
+import Navbar from "../components/Navbar";
+import Svg from "../components/Svgs";
 
 const Table = () => {
   const [query, setQuery] = useState("");
@@ -16,80 +15,109 @@ const Table = () => {
 
   console.log(query);
   return (
-    <div className="bg-slate-200 h-screen">
-      <NavBar />
+    <div className="bg-white min-h-screen">
+      <Navbar />
       <div className="flex flex-col items-center justify-center">
         <p className="text-5xl ..."> </p>
-        <p className="text-5xl ...">Recipients</p>
+        <p className="text-5xl text-black ...">Recipients</p>
         <p className="text-5xl ..."> </p>
-        <div className="overflow-x-auto">
-          <input onChange={(e) => setQuery(e.target.value)}></input>
-          <select
-            onChange={(e) => {
-              setDropDown(e.target.value);
-            }}
-          >
-            <option value={"A+"}>A+</option>
-            <option value={"A-"}>A-</option>
-            <option value={"B+"}>B+</option>
-            <option value={"B-"}>B-</option>
-            <option value={"AB+"}>AB+</option>
-            <option value={"AB-"}>AB-</option>
-            <option value={"O+"}>O+</option>
-            <option value={"O-"}>O-</option>
-          </select>
-          <table className="table w-[45%] mx-auto rounded-lg mb-32 mt-9">
+        <div className="overflow-x-auto rounded-lg">
+          <div className="flex justify-between ">
+            <input
+              onChange={(e) => setQuery(e.target.value)}
+              className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-l-lg border-l-gray-50 border-l-2 border border-gray-100 focus:ring-blue-500 focus:border-blue-500 border-r-0 dark:bg-gray-200 dark:border-l-gray-400  dark:border-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+              placeholder="Search Mockups, Logos, Design Templates..."
+            ></input>
+            <select
+              className="rounded-r-lg bg-slate-300 text-black border border-gray-400 border-l-0"
+              onChange={(e) => {
+                setDropDown(e.target.value);
+              }}
+              placeholder="Blood Type"
+            >
+              <option value="" disabled selected>
+                Blood Type
+              </option>
+
+              <option className="text-center" value={"A+"}>
+                A+
+              </option>
+              <option className="text-center" value={"A-"}>
+                A-
+              </option>
+              <option className="text-center" value={"B+"}>
+                B+
+              </option>
+              <option className="text-center" value={"B-"}>
+                B-
+              </option>
+              <option className="text-center" value={"AB+"}>
+                AB+
+              </option>
+              <option className="text-center" value={"AB-"}>
+                AB-
+              </option>
+              <option className="text-center" value={"O+"}>
+                O+
+              </option>
+              <option className="text-center" value={"O-"}>
+                O-
+              </option>
+            </select>
+          </div>
+          <table className="table rounded-2xl mb-32 mt-9 overflow-hidden shadow-xl">
             {/* head */}
-            <thead className="bg-red-600 text-2xl">
+            <thead className="bg-red-600 text-lg">
               <tr className="text-zinc-50">
-                <th></th>
-                <th className="text-center align-middle">Name</th>
-                <th className="text-center align-middle">
+                <th className="shadow-2xl">#</th>
+                <th className="text-center align-middle font-normal">Name</th>
+                <th className="text-center align-middle font-normal">
                   Voluntary Donations
                 </th>
-                <th className="text-center align-middle">Donation Requests</th>
-                <th className="text-center align-middle">Blood Types</th>
-                <th className="text-center align-middle">Set Appointment</th>
+                <th className="text-center align-middle font-normal">
+                  Donation Requests
+                </th>
+                <th className="text-center align-middle font-normal">
+                  Blood Types
+                </th>
+                <th className="text-center align-middle font-normal">
+                  Set Appointment
+                </th>
               </tr>
             </thead>
-            <tr className="bg-white">
-              <th className="text-center align-middle relative">index</th>
-              <td className="text-center align-middle">donorSerialNo</td>
-              <td className="text-center align-middle">voluntaryDonations</td>
-              <td className="text-center align-middle">donationRequests</td>
-              <td className="text-center align-middle">bloodType</td>
-              <td className="text-center align-middle">
-                <div className="flex items-center justify-center mt-2">
-                  <button
-                    type="button"
-                    className="focus:outline-none text-white bg-gray-700 hover:bg-green-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-600 dark:hover:bg-green-700"
-                  >
-                    <Svg />
-                  </button>
-                </div>
-              </td>
-            </tr>
+
             {/* row 1 */}
-            {recipients
-              ?.filter((r) => r.bloodType.includes(dropDown))
-              ?.filter((r) =>
-                r.name.toLowerCase().includes(query.toLowerCase())
-              )
-              .map((recipient, index) => {
-                console.log(recipient);
-                return (
-                  <tbody className="bg-white" key={index}>
-                    <RowCard
-                      index={index}
-                      donorSerialNo={recipient.name}
-                      voluntaryDonations={0}
-                      donationRequests={recipient.donor_id.length}
-                      bloodType={recipient.bloodType}
-                      urgent={recipient.urgent}
-                    />
-                  </tbody>
-                );
-              })}
+
+            {recipients &&
+              recipients
+                .filter((r) => {
+                  if (dropDown && r.bloodType) {
+                    return r.bloodType.includes(dropDown);
+                  }
+                  return true; // Include all if dropDown is not selected or bloodType is undefined
+                })
+                .filter((r) => {
+                  if (query && r.name) {
+                    return r.name.toLowerCase().includes(query.toLowerCase());
+                  }
+                  return true; // Include all if query is not provided or name is undefined
+                })
+                .map((recipient, index) => {
+                  console.log(recipient);
+                  return (
+                    <tbody className="bg-zinc-100 text-black" key={index}>
+                      <RowCard
+                        index={index}
+                        donorSerialNo={recipient.name}
+                        voluntaryDonations={0}
+                        donationRequests={recipient.donor_id.length}
+                        bloodType={recipient.bloodType}
+                        urgent={recipient.urgent}
+                        recipient={recipient}
+                      />
+                    </tbody>
+                  );
+                })}
           </table>
         </div>
       </div>

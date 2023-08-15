@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
-import DonorDetail from "../DonorDetail";
+import DonorDetail from "../ProfileCard";
 
 const DonateCardDetails = ({
   donerDetails = {
@@ -76,7 +76,7 @@ const DonateCardDetails = ({
           <div className="w-[40%] h-full  flex items-center">
             <div className="w-[100%] h-[60%] border border-red-800 bg-red-700 rounded-lg  flex justify-center items-center   ">
               <button className="text-[20px]" onClick={() => {}}>
-                Save
+                Submit
               </button>
             </div>
           </div>

@@ -1,37 +1,83 @@
 import React from "react";
+import NavBar from "./Navbar";
 
-const Appointment = () => {
+const Appointment = ({ data }) => {
+  console.log(data);
   return (
     <div>
-      <div className="flex items-center justify-center p-12">
-        {/* <!-- Author: FormBold Team --> */}
-        <div className="w-full max-w-[50%] bg-white rounded-xl">
-          <form>
-            <div className="-mx-3 flex flex-wrap">
-              <div className="w-full px-3 sm:w-1/2">
-                <div className="mb-5">
-                  <label
-                    for="date"
-                    className="mb-3 block text-base font-medium text-[#07074D]"
-                  >
-                    Date
-                  </label>
-                  <input
-                    type="date"
-                    name="date"
-                    id="date"
-                    className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <button className="hover:shadow-form w-[50%] rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                Book Appointment
-              </button>
-            </div>
-          </form>
+      {/* <NavBar /> */}
+      <div className="max-w-md mx-auto mt-10 w-[50vw] bg-slate-100 shadow-lg rounded-lg overflow-hidden">
+        <div className="text-2xl py-4 px-6 bg-red-700 text-white text-center font-bold normal-case">
+          Schedule an Appointment
+        </div>
+        <div className="py-4 px-6" action="" method="POST">
+          <div className="mb-4">
+            <label className="block text-black font-bold mb-2" for="name">
+              Name
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-black placeholder:text-black leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-300 "
+              name="name"
+              id="name"
+              type="text"
+              placeholder={data?.name}
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-black font-bold mb-2" for="email">
+              Email
+            </label>
+            <input
+              className="shadow appearance-none text-black placeholder:text-black border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-300"
+              name="email"
+              id="email"
+              type="email"
+              placeholder={data?.email}
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-black font-bold mb-2" for="phone">
+              Phone Number
+            </label>
+            <input
+              className="shadow appearance-none text-black placeholder:text-black border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-300"
+              name="phoneNo"
+              id="phone"
+              type="tel"
+              placeholder={data?.number || "Enter phone number"}
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-black font-bold mb-2" for="date">
+              Date
+            </label>
+            <input
+              className="shadow appearance-none text-black placeholder:text-black border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-300"
+              name=""
+              id="date"
+              type="date"
+              placeholder="Select a date"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-black font-bold mb-2" for="message">
+              Message
+            </label>
+            <textarea
+              className="shadow appearance-none text-black placeholder:text-black border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline bg-white border-gray-300"
+              id="message"
+              rows="4"
+              placeholder="Enter any additional information"
+            ></textarea>
+          </div>
+          <div className="flex items-center justify-center mb-4">
+            <button
+              className="bg-red-700 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+              type="submit"
+            >
+              Book Appointment
+            </button>
+          </div>
         </div>
       </div>
     </div>

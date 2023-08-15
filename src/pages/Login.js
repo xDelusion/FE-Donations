@@ -1,11 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { login, register } from "../api/auth";
 import jwt_decode from "jwt-decode";
 import UserContext from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/Navbar";
+import Navbar from "../components/Navbar";
 import backgroundImage from "../assets/media/AdobeStock_198163710.png";
+import loginImg from "../assets/login.jpg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,16 +31,20 @@ const Login = () => {
   };
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
     loginFn();
   };
 
+  useEffect(() => {
+    if (user) {
+      navigate("/list");
+    }
+  }, [user]);
+
   return (
     <div>
-      <NavBar />
-      <body className="bg-gray-200">
+      <body className="bg-white">
         <div className="relative flex flex-col justify-center h-screen overflow-hidden">
-          <div className="w-full p-6 m-auto rounded-xl shadow-md ring-gray-800/50 bg-white lg:w-[30%]">
+          <div className="w-full p-6 m-auto rounded-xl shadow-2xl border border-r-transparent ring-gray-800/50 bg-gray-100 lg:w-[30%]">
             <h1 className="text-3xl font-semibold text-center text-gray-900 mt-3">
               Login
             </h1>
@@ -55,7 +60,7 @@ const Login = () => {
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter Civil ID"
-                  className="w-[51%] input input-bordered bg-slate-200"
+                  className="w-[51%] input input-bordered bg-white border-gray-400"
                 />
               </div>
               <div>
@@ -69,7 +74,7 @@ const Login = () => {
                   onChange={handleChange}
                   type="text"
                   placeholder="Enter Emp No."
-                  className="w-[51%] input input-bordered bg-slate-200"
+                  className="w-[51%] input input-bordered bg-white border-gray-400"
                 />
               </div>
               <div>
@@ -83,14 +88,14 @@ const Login = () => {
                   onChange={handleChange}
                   type="password"
                   placeholder="Enter Password"
-                  className="w-[51%] input input-bordered bg-slate-200"
+                  className="w-[51%] input input-bordered bg-white border-gray-400"
                 />
               </div>
               <div>
                 <button
                   type="submit"
                   onClick={loginFn}
-                  className="btn w-[20%] bg-red-700 text-white hover:bg-red-900 mt-5"
+                  className="btn w-[20%] bg-red-600 text-white hover:bg-red-700 mt-5"
                 >
                   Login
                 </button>
