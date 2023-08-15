@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="navbar bg-red-500 flex justify-center items-center">
         <div className="flex-1">
           <Link to="/list">
-            <img className="w-[10%] h-[10%]" src={image} alt="Logo" />
+            <img className="ml-10 w-[10%] h-[10%]" src={image} alt="Logo" />
           </Link>
         </div>
         <div className="flex-none">

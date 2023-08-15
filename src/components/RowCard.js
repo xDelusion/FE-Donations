@@ -1,5 +1,5 @@
 import React from "react";
-import Svgs from "./Svgs";
+import Svgs from "./Svgs/arrow";
 import { useNavigate } from "react-router-dom";
 
 const RowCard = ({
@@ -26,7 +26,7 @@ const RowCard = ({
               onClick={() => {
                 navigate(`/recipientID/${recipient._id}`);
               }}
-              className="focus:outline-none text-white bg-gray-700 hover:bg-green-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-600 dark:hover:bg-green-700"
+              className="focus:outline-none text-white bg-gray-700 hover:bg-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-600 dark:hover:bg-white"
             >
               <Svgs />
             </button>

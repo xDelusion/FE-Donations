@@ -16,7 +16,7 @@ const ProfileCard = ({ data }) => {
                 <p className="mt-[10%] font-bold">{data?.name}</p>
                 <p className="mt-[2%] font-semibold">
                   {/* ====================================================================================================== */}
-                  {moment(data?.dob).format("MMM Do YY")}
+                  {moment(data?.dob).format("L")}
                   {/* ====================================================================================================== */}
                 </p>
                 <p className="mt-[10%] font-medium">Blood Type</p>
