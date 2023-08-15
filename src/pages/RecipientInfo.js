@@ -29,7 +29,9 @@ const RecipientInfo = () => {
           <div className="flex justify-center items-center gap-32">
             <ProfileCard data={data} />
             <div>
-              <p className=" font-bold text-black text-2xl ">Donors Requests</p>
+              <p className=" font-bold text-black text-2xl ml-12">
+                Donors Requests
+              </p>
               <div className="ml-8  top-[10px]  overflow-scroll w-[150%] h-[400px]">
                 <TableHeader_2 data={data} />
               </div>

@@ -3,7 +3,7 @@ import RowCard from "../components/RowCard";
 import { useQuery } from "@tanstack/react-query";
 import { getAllRecipients } from "../api/recipient";
 import Navbar from "../components/Navbar";
-import Svg from "../components/Svgs";
+import Svg from "../components/Svgs/arrow";
 
 const Table = () => {
   const [query, setQuery] = useState("");
@@ -40,7 +40,7 @@ const Table = () => {
               </option>
 
               <option className="text-center" value={""}>
-                ALL
+                All
               </option>
               <option className="text-center" value={"A+"}>
                 A+
@@ -108,7 +108,7 @@ const Table = () => {
                   return (
                     <tbody className="bg-zinc-100 text-black" key={index}>
                       <RowCard
-                        index={index}
+                        index={index + 1}
                         donorSerialNo={recipient.name}
                         voluntaryDonations={0}
                         donationRequests={recipient.donor_id.length}
